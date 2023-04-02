@@ -3,12 +3,14 @@ require("dotenv").config()
 const {connection}  = require("./Configs/db")
 const cors=require("cors")
 const userRouter = require("./Routes/auth.routes")
+const router = require("./Routes/product.routes")
 const app=express()
 app.use(express.json())
 const port=process.env.port|| 9090
 
 app.use(cors())
 app.use("/user",userRouter)
+app.use("/products", router);
 app.get("/",(req,res)=>{
     res.send("Welcome to homepage")
 })
